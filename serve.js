@@ -11,7 +11,6 @@ var twit = new twitter({
     token_secret: process.env.tokenSecret
 });
 
-console.log(process.env.consumerKey);
 
 var server = restify.createServer();
 server.use(restify.bodyParser({ mapParams: false }));
@@ -31,8 +30,7 @@ server.post('/data', function (req, res, next){
                 beta += betaAdd + ',';
             }
         }
-        console.log(alpha);
-        console.log(beta);
+        console.log(process.env.consumerKey);
         request.post('https://chart.googleapis.com/chart', {form:{chs: '780x300', chd:'t2:' + alpha + '|' + beta, cht: 'ls', chco: 'D93537,FFFDD1', chf: 'bg,s,272928'}},function(err, response, body){
             if(err){
                 console.log(err);
