@@ -47,9 +47,8 @@ server.post('/data', function (req, res, next){
                     console.log(err);
                     res.send(201, err);
                 } else {
-                    res.send(201, 'Tweet Created');
+                    res.send(201, response.body);
                 }
-                console.log(response.body);
             });
         });
     });
