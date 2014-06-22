@@ -35,6 +35,7 @@ server.post('/data', function (req, res, next){
         request.post('https://chart.googleapis.com/chart', {form:{chs: '780x300', chd:'t2:' + alpha + '|' + beta, cht: 'ls', chco: 'D93537,FFFDD1', chf: 'bg,s,272928'}},function(err, response, body){
             if(err){
                 console.log(err);
+                res.send(201, err);
             }
             console.log(body);
             var d = new Date();
@@ -45,7 +46,7 @@ server.post('/data', function (req, res, next){
             twit.post(curr_hour + ":" + curr_min + ":" + curr_sec + ":" + curr_msec + ' PILOT ---* ' + req.body.username + ' *--- SCORE:' + req.body.score + ' CHKSUM:0x245423 PENDING...... APPROVED', body, function(err, response) {
                 if (err) {
                     console.log(err);
-                    res.send(201, 'Tweet Error');
+                    res.send(201, err);
                 } else {
                     res.send(201, 'Tweet Created');
                 }
