@@ -11,6 +11,7 @@ var twit = new twitter({
     token_secret: process.env.tokenSecret
 });
 
+console.log(process.env.consumerKey);
 
 var server = restify.createServer();
 server.use(restify.bodyParser({ mapParams: false }));
