@@ -1,5 +1,5 @@
 var restify = require('restify'),
-    twitter = require('twitter_update_with_media'),
+    twitter = require('./twitter_update_with_media.js'),
     fs = require('fs'),
     parse = require('csv-parse'),
     request = require('request').defaults({encoding : null});
