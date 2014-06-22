@@ -5,10 +5,10 @@ var restify = require('restify'),
     request = require('request').defaults({encoding : null});
 
 var twit = new twitter({
-    consumer_key: env.consumerKey,
-    consumer_secret: env.consumerSecret,
-    token: env.token,
-    token_secret: env.tokenSecret
+    consumer_key: process.env.consumerKey,
+    consumer_secret: process.env.consumerSecret,
+    token: process.env.token,
+    token_secret: process.env.tokenSecret
 });
 
 
