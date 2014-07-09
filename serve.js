@@ -20,8 +20,8 @@ server.post('/data', function (req, res, next){
     var beta = '';
     parse(req.body.data, {delimiter: ',', rowDelimiter: ' '}, function (err, data){
         for(var i = 0; i < data.length; i++){
-            var alphaAdd = (Math.round(data[i][0] * 100) / 100) + 50;
-            var betaAdd = (Math.round(data[i][1] * 100) / 100) + 50;
+            var alphaAdd = (Math.round(data[i][0] * 100) / 100);
+            var betaAdd = (Math.round(data[i][1] * 100) / 100);
             if(i == data.length - 1){
                 alpha += alphaAdd;
                 beta += betaAdd;
@@ -31,7 +31,7 @@ server.post('/data', function (req, res, next){
             }
         }
         console.log(process.env.consumerKey);
-        request.post('https://chart.googleapis.com/chart', {form:{chs: '780x300', chd:'t2:' + alpha + '|' + beta, cht: 'ls', chco: 'D93537,FFFDD1', chf: 'bg,s,272928'}},function(err, response, body){
+        request.post('https://chart.googleapis.com/chart', {form:{chds: 'a', chs: '780x300', chd:'t2:' + alpha + '|' + beta, cht: 'ls', chco: 'D93537,FFFDD1', chf: 'bg,s,272928'}},function(err, response, body){
             if(err){
                 console.log(err);
                 res.send(201, err);
